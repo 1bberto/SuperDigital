@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuperDigital.Dominio.Base\SuperDigital.Dominio.Base.csproj" />
+    <ProjectReference Include="..\SuperDigital.Utilitarios\SuperDigital.Utilitarios.csproj" />
+  </ItemGroup>
+
+</Project>
