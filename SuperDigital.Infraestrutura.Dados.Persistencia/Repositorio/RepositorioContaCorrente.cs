@@ -37,6 +37,19 @@ namespace SuperDigital.Infraestrutura.Dados.Persistencia.Repositorio
 
             entidade.ContaCorrenteId = contaCorrenteId;
         }
+        /// <inheritdoc />
+        public async Task<ContaCorrente> BuscarContaCorrenteAssincrono(string codigo)
+        {
+            var parametroCodigo = nameof(ContaCorrente.Codigo);
+
+            var parametros = new DynamicParameters();
+            parametros.Add($"@{parametroCodigo}", codigo);
+
+            return await UnidadeTrabalho.ObterConexao()
+                .QueryFirstOrDefaultAsync<ContaCorrente>($"EXEC {NomeProcedureSelecao} " +
+                $"NULL, @{parametroCodigo}"
+                , parametros, UnidadeTrabalho.ObterTransacao());
+        }
         #endregion
         #endregion
     }

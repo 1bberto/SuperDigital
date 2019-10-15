@@ -84,7 +84,7 @@ BEGIN
 END
 GO
 --=============================================
--- Nome: USP_ContaCorrente_INS
+-- Nome: USP_ContaCorrente_SEL
 -- Data: 13/10/2019
 -- Função: Inserir Registro na tabela tblContaCorrente
 -- Autor: Humberto Rodrigues
@@ -114,7 +114,7 @@ GO
 -- Função: Inserir Registro na tabela tblLancamento
 -- Autor: Humberto Rodrigues
 --=============================================
-CREATE OR ALTER PROCEDURE [dbo].[USP_ContaCorrente_INS]
+CREATE OR ALTER PROCEDURE [dbo].[USP_Lancamento_INS]
 	@TipoLancamentoId INT,
 	@ContaCorrenteOrigemId UNIQUEIDENTIFIER = NULL,
 	@ContaCorrenteDestinoId UNIQUEIDENTIFIER,
@@ -157,4 +157,30 @@ BEGIN
 	AND (@TipoLancamentoId IS NULL OR TipoLancamentoId = @TipoLancamentoId)
 	AND (@ContaCorrenteOrigemId IS NULL OR ContaCorrenteOrigemId = @ContaCorrenteOrigemId)
 	AND (@ContaCorrenteDestinoId IS NULL OR ContaCorrenteDestinoId = @ContaCorrenteDestinoId)
+END
+
+GO
+--=============================================
+-- Nome: USP_LancamentoExtrato
+-- Data: 13/10/2019
+-- Função: Retorna o extrato de uma conta corrente
+-- Autor: Humberto Rodrigues
+--=============================================
+CREATE OR ALTER PROCEDURE [dbo].[USP_LancamentoExtrato]	
+	@ContaCorrenteId UNIQUEIDENTIFIER
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT 
+		CAST(LancamentoId AS VARCHAR(36)) AS LancamentoId,		
+		TipoLancamentoId,
+		ContaCorrenteOrigemId,
+		ContaCorrenteDestinoId,
+		Valor,
+		DataInclusaoRegistro
+	FROM tblLancamento
+	WHERE 
+		ContaCorrenteOrigemId = @ContaCorrenteId OR ContaCorrenteDestinoId = @ContaCorrenteId
 END

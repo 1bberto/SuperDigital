@@ -40,7 +40,7 @@ CREATE TABLE tblLancamento
 	LancamentoId UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID(), 
 	TipoLancamentoId INT NOT NULL,
 	ContaCorrenteOrigemId UNIQUEIDENTIFIER,
-	ContaCorrenteDestinoId UNIQUEIDENTIFIER NOT NULL,
+	ContaCorrenteDestinoId UNIQUEIDENTIFIER,
 	Valor DECIMAL(18,2) NOT NULL,
 	DataInclusaoRegistro datetime NOT NULL DEFAULT GETUTCDATE(),
 	CONSTRAINT [PK_tblLancamento_LancamentoId] PRIMARY KEY(LancamentoId),
