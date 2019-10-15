@@ -2,8 +2,6 @@
 # SuperDigital
 Projeto de teste de conhecimento
 
-### PROJETO AINDA NÃO FINALIZADO!
-
  **1**. EXPLIQUE COM SUAS PALAVRAS O QUE É DOMAIN DRIVEN DESIGN E SUA IMPORTÂNCIA NA ESTRATÉGIA DE DESENVOLVIMENTO DE SOFTWARE:
 
 > O modelo de desenvolvimento seguindo DDD é quando a arquitetura do
